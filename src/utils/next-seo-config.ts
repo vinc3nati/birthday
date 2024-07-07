@@ -11,7 +11,7 @@ const defaultSeo = {
     canonical: "supv-birthday.vercel.app",
     images: [
       {
-        url: "https://res.cloudinary.com/randomwave45/image/upload/v1720359971/Your_paragraph_text_asvlkw.png",
+        url: "https://res.cloudinary.com/randomwave45/image/upload/v1720364691/thumbnail-compressed_dvsvnj.jpg",
         width: 400,
         height: 600,
         alt: "Supriya Palve Birthday",
