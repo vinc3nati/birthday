@@ -1,7 +1,24 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 
-export const CarouselItem = ({ children, width, ...props }) => {
+type CarouselItemProps = {
+  children: ReactNode;
+  width?: string;
+  style?: React.CSSProperties;
+};
+
+type CarouselProps = {
+  children: ReactNode;
+  delay?: number;
+  defaultActive?: number;
+  style?: React.CSSProperties;
+};
+
+export const CarouselItem = ({
+  children,
+  width,
+  ...props
+}: CarouselItemProps) => {
   return (
     <div
       className="carousel-item"
@@ -13,14 +30,19 @@ export const CarouselItem = ({ children, width, ...props }) => {
   );
 };
 
-const Carousel = ({ children, delay, defaultActive = 0, ...props }) => {
+const Carousel = ({
+  children,
+  delay,
+  defaultActive = 0,
+  ...props
+}: CarouselProps) => {
   const [activeIndex, setActiveIndex] = useState(defaultActive - 1 || 0);
   const [paused, setPaused] = useState(false);
   const interval = useRef(0);
 
   const SLIDE_DELAY = useMemo(() => (delay ? delay : 5000), [delay]);
 
-  const updateIndex = (newIndex) => {
+  const updateIndex = (newIndex: number) => {
     if (newIndex < 0) {
       newIndex = React.Children.count(children) - 1;
     } else if (newIndex >= React.Children.count(children)) {
@@ -31,6 +53,7 @@ const Carousel = ({ children, delay, defaultActive = 0, ...props }) => {
   };
 
   useEffect(() => {
+    // @ts-ignore
     interval.current = setInterval(() => {
       if (!paused) {
         updateIndex(activeIndex + 1);
@@ -62,6 +85,7 @@ const Carousel = ({ children, delay, defaultActive = 0, ...props }) => {
         style={{ transform: `translateX(-${activeIndex * 100}%)` }}
       >
         {React.Children.map(children, (child) => {
+          // @ts-ignore
           return React.cloneElement(child, { width: "100%" });
         })}
       </div>
