@@ -1,5 +1,6 @@
 import { useAudio } from "@/hooks/useAudio";
 import { IMAGES, WISH_TEXT } from "@/utils/constant";
+import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatedText } from "../AnimatedText";
 import { Balloons } from "../Balloon";
@@ -129,7 +130,7 @@ export default function Home() {
           />
 
           {step >= State.Birthday && step < State.Message && (
-            <h2 className="absolute text-center text-2xl uppercase tracking-wide text-white top-[60%] animate-fadeIn">
+            <h2 className="absolute mt-3 text-center text-xl uppercase tracking-wide text-white top-[60%] animate-fadeIn">
               Happiest Birthday Badhir!!! ❤️ 🎉
             </h2>
           )}
@@ -138,14 +139,20 @@ export default function Home() {
       {step === State.Message && (
         <AnimatedText WORDS_TO_ANIMATE={WISH_TEXT} setStep={setStep} />
       )}
-
       {step === State.Carousel && (
         <div className="px-2 flex flex-col gap-2">
           <h3 className="text-center text-xl">Reliving Memories</h3>
           <Carousel delay={3000}>
             {IMAGES?.map((item) => (
               <CarouselItem key={item}>
-                <img src={item} alt={item} />
+                <Image
+                  quality={100}
+                  unoptimized
+                  src={item}
+                  alt={item}
+                  width={100}
+                  height={100}
+                />
               </CarouselItem>
             ))}
           </Carousel>

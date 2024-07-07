@@ -12,7 +12,7 @@ export const Decorate = ({ showBanner }: { showBanner: boolean }) => {
       <Image
         src="/assets/banner.png"
         alt="Birthday Banner"
-        width={400}
+        width={350}
         height={100}
         className=""
       />
