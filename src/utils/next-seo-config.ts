@@ -7,8 +7,8 @@ const defaultSeo = {
     locale: "en-Us",
     title: "Happy Birthday Supriya!",
     description: "May this year be as great as you are and as sweet as you!!!!",
-    url: "https://supriya.vercel.app",
-    canonical: "https://supriya.vercel.app",
+    url: "supv-birthday.vercel.app",
+    canonical: "supv-birthday.vercel.app",
     images: [
       {
         url: "https://res.cloudinary.com/randomwave45/image/upload/v1720359971/Your_paragraph_text_asvlkw.png",
